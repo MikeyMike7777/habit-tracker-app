@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Colors from '../app/styles/Colors';
-import { Fonts } from '../app/styles/Fonts';
+import Colors from '../constants/Colors';
+import { Fonts } from '../constants/Fonts';
 
 export default function HabitRow({ title, count1, count2, iconColor1 }) {
   return (

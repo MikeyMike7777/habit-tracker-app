@@ -1,5 +1,5 @@
-import Colors from "../../app/styles/Colors";
-import { Fonts } from "../../app/styles/Fonts";
+import Colors from "../../constants/Colors";
+import { Fonts } from "../../constants/Fonts";
 import { StyleSheet } from 'react-native';
 
 export const HabitBoxStyles = StyleSheet.create({

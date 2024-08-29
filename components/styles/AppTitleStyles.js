@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Fonts } from '../../app/styles/Fonts';
+import { Fonts } from '../../constants/Fonts';
 
 export const AppTitleStyles = StyleSheet.create({
     titleContainer: {

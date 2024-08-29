@@ -4,7 +4,7 @@ import BottomNav from '../../components/BottomNav';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import AppTitle from '../../components/AppTitle';
 import HabitBox from '../../components/HabitBox';
-import Colors from '../styles/Colors';
+import Colors from '../../constants/Colors';
 
 export default function HomeScreen() {
   return (

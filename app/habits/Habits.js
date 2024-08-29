@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import BottomNav from '../../components/BottomNav';
 import AppTitle from '../../components/AppTitle';
 import { GlobalStyles } from '../styles/GlobalStyles';
-import Colors from '../styles/Colors';
+import Colors from '../../constants/Colors';
 import HabitRow from '../../components/HabitRow';
 
 export default function Habits() {

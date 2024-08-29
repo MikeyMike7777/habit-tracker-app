@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { HabitBoxStyles } from './styles/HabitBoxStyles';
 import React, { useState } from 'react';
-import Colors from '../app/styles/Colors';
+import Colors from '../constants/Colors';
 
 export default function HabitBox({ title, count, iconColor }) {
     const [isDone, setIsDone] = useState(true);
