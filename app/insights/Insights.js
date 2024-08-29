@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 import BottomNav from '../../components/BottomNav';
+import AppTitle from '../../components/AppTitle';
 
 export default function Insights() {
   return (
     <View style={styles.container}>
+      <AppTitle/>
       <View style={styles.content}>  
         <Text>Details</Text>
       </View>
