@@ -13,11 +13,20 @@ export default function HabitBox({ title, count, iconColor }) {
 
     return (
         <TouchableOpacity activeOpacity={1} onPress={toggleDone}>
-            <View style= {[HabitBoxStyles.box, isDone ? HabitBoxStyles.blackBox : HabitBoxStyles.whiteBox]}>
-                <Text style={[HabitBoxStyles.title, {color: isDone ? Colors.offWhite : Colors.black}]}>{title}</Text>
-                    <View style={HabitBoxStyles.iconRow}>
-                        <Ionicons name="checkmark-circle" size={20} color={iconColor} />
-                    <Text style={[HabitBoxStyles.count, {color: isDone ? Colors.offWhite : Colors.black}]}>{count}</Text>
+            <View style= {[HabitBoxStyles.box, isDone ? HabitBoxStyles.whiteBox : HabitBoxStyles.blackBox]}>
+                <Text
+                    style={[HabitBoxStyles.title, {color: isDone ? Colors.black : Colors.offWhite}]}
+                    numberOfLines={2} // Ensure text stays on one line
+                    adjustsFontSizeToFit={true} // Adjust font size to fit within the box
+                    minimumFontScale={0.5} // Set a minimum font scale
+                >
+                    {title}
+                </Text>
+                <View style={HabitBoxStyles.iconRow}>
+                    <Ionicons name="checkmark-circle" size={20} color={iconColor} />
+                    <Text style={[HabitBoxStyles.count, {color: isDone ? Colors.black : Colors.offWhite}]}>
+                        {count}
+                    </Text>
                 </View>
             </View>
         </TouchableOpacity>

@@ -13,7 +13,7 @@ export default function HomeScreen() {
       <AppTitle/>
       <View style={GlobalStyles.content}> 
         <View style={styles.grid}>
-          <HabitBox title="Habit 1" count="2" iconColor={Colors.blue}/>
+          <HabitBox title="Habit 1 but it's long" count="2" iconColor={Colors.blue}/>
           <HabitBox title="Habit 2" count="2" iconColor={Colors.blue}/>
           <HabitBox title="Habit 3" count="21" iconColor={Colors.blue}/>
           <HabitBox title="Habit 4" count="66" iconColor={Colors.blue}/>

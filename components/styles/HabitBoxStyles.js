@@ -4,12 +4,12 @@ import { StyleSheet } from 'react-native';
 
 export const HabitBoxStyles = StyleSheet.create({
     box: {
-        width: '100%',
-        paddingHorizontal: 28,
-        paddingVertical: 22,
+        width: 120,
+        height: 100,
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingHorizontal: 15,
         marginBottom: 28,
         borderWidth: 3,
         borderColor: 'black',
@@ -21,16 +21,17 @@ export const HabitBoxStyles = StyleSheet.create({
         backgroundColor: Colors.offWhite,
     },
     title: {
-        fontFamily: Fonts.AvenirHeavyOblique,
+        fontFamily: Fonts.AvenirHeavy,
         fontSize: 18,
         marginBottom: 10,
+        textAlign: 'center'
     },
     iconRow: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     count: {
-        fontFamily: Fonts.AvenirHeavyOblique,
+        fontFamily: Fonts.AvenirHeavy,
         fontSize: 16,
         marginLeft: 5,
     }
