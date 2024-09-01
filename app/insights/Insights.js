@@ -43,13 +43,15 @@ export default function Insights() {
 
   return (
     <View style={GlobalStyles.container}>
-      <AppTitle />
+      <View style={styles.spacing}>
+        <AppTitle />
+      </View>
       <View style={GlobalStyles.content}>
         <BarChart
           style={styles.chart}
           data={data}
           width={screenWidth - 40} // Adjust width for padding
-          height={300} // Adjust height as needed
+          height={350} // Adjust height as needed
           yAxisLabel=""
           yAxisSuffix="%"
           yAxisInterval={20} // Steps of 20 for the y-axis labels
@@ -91,4 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.black,
   },
+  spacing: {
+    paddingBottom: 30,
+  }
 });
