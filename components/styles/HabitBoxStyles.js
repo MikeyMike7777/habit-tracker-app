@@ -11,7 +11,7 @@ export const HabitBoxStyles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 15,
         marginBottom: 28,
-        borderWidth: 3,
+        borderWidth: 2,
         borderColor: 'black',
     },
     blackBox: {

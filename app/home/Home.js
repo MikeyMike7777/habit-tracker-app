@@ -5,15 +5,26 @@ import { GlobalStyles } from '../styles/GlobalStyles';
 import AppTitle from '../../components/AppTitle';
 import HabitBox from '../../components/HabitBox';
 import Colors from '../../constants/Colors';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
   return (
     <View style={GlobalStyles.container}>
-      {/* <Link href="/home/HomeInfo" style={styles.link}>Go to Home Info</Link> */}
-      <AppTitle/>
+      {/* Info Button */}
+      <Link href="/home/HomeInfo" style={GlobalStyles.infoButton}>
+        <Ionicons name="information-circle-outline" size={32} color={Colors.black}/>
+      </Link>
+
+      {/* App Title */}
+      <AppTitle />
+
+      {/* Add Button */}
+      <Link href="/habits/HabitInfo" style={GlobalStyles.addButton}>
+        <Ionicons name="add-outline" size={32} color={Colors.black} />
+      </Link>
       <View style={GlobalStyles.content}> 
         <View style={styles.grid}>
-          <HabitBox title="Habit 1 but it's long" count="2" iconColor={Colors.blue}/>
+          <HabitBox title="Habit 1" count="2" iconColor={Colors.blue}/>
           <HabitBox title="Habit 2" count="2" iconColor={Colors.blue}/>
           <HabitBox title="Habit 3" count="21" iconColor={Colors.blue}/>
           <HabitBox title="Habit 4" count="66" iconColor={Colors.blue}/>

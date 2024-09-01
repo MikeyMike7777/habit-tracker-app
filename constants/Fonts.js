@@ -2,6 +2,7 @@ import * as Font from 'expo-font';
 
 export const Fonts = {
   AvenirMedium: 'Avenir-Medium',
+  AvenirMediumOblique: 'Avenir-MediumOblique',
   AvenirBlack: 'Avenir-Black',
   AvenirBlackOblique: 'Avenir-BlackOblique',
   AvenirHeavy: 'Avenir-Heavy',
@@ -12,6 +13,7 @@ export const Fonts = {
 
 Font.loadAsync({
   [Fonts.AvenirMedium]: require('../assets/fonts/avenir/AvenirLTProMedium.otf'),
+  [Fonts.AvenirMediumOblique]: require('../assets/fonts/avenir/AvenirLTProMediumOblique.otf'),
   [Fonts.AvenirBlack]: require('../assets/fonts/avenir/AvenirLTProBlack.otf'),
   [Fonts.AvenirBlackOblique]: require('../assets/fonts/avenir/AvenirLTProBlackOblique.otf'),
   [Fonts.AvenirHeavy]: require('../assets/fonts/avenir/AvenirLTProHeavy.otf'),
