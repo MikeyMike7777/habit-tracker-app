@@ -1,8 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Link, usePathname } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { NavStyles } from './styles/NavStyles';
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -33,3 +32,15 @@ export default function BottomNav() {
     </View>
   );
 }
+
+
+const NavStyles = StyleSheet.create({
+  bottomNav: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 30,
+  },
+  navItem: {
+    paddingHorizontal: 37,
+  },
+});

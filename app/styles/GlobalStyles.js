@@ -14,17 +14,6 @@ export const GlobalStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    DIN: {
-        fontFamily: Fonts.Copperplate,
-        fontSize: 70,
-        fontWeight: 'bold',
-        margin: -10,
-    },
-    DoItNow: {
-        fontFamily: Fonts.Baskerville,
-        fontSize: 17,
-        fontStyle: 'italic'
-    },
     cancelButton: {
         fontFamily: Fonts.AvenirHeavy,
         fontSize: 18,
@@ -36,16 +25,6 @@ export const GlobalStyles = StyleSheet.create({
         fontSize: 18,
         color: Colors.black,
         paddingRight: 20,
-    },
-    infoButton: {
-        position: 'absolute',
-        top: 20, // Adjust according to your layout
-        left: 20, // Adjust according to your layout
-      },
-    addButton: {
-        position: 'absolute',
-        top: 18, // Adjust according to your layout
-        right: 20, // Adjust according to your layout
     },
     header: {
         flexDirection: 'row',

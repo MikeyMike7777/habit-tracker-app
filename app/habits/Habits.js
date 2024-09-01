@@ -4,25 +4,16 @@ import BottomNav from '../../components/BottomNav';
 import AppTitle from '../../components/AppTitle';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import Colors from '../../constants/Colors';
-import HabitRow from '../../components/HabitRow';
+import HabitRow from './components/HabitRow';
 import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
+import TitleWithButtons from '../../components/TitleWithButtons';
 
 export default function Habits({ navigation }) {
   return (
     <View style={GlobalStyles.container}>
       {/* Info Button */}
-      <Link href="/home/HomeInfo" style={GlobalStyles.infoButton}>
-        <Ionicons name="information-circle-outline" size={32} color={Colors.black}/>
-      </Link>
-
-      {/* App Title */}
-      <AppTitle />
-
-      {/* Add Button */}
-      <Link href="/habits/HabitInfo" style={GlobalStyles.addButton}>
-        <Ionicons name="add-outline" size={32} color={Colors.black} />
-      </Link>
+      <TitleWithButtons/>
 
       {/* Habit List */}
       <View style={GlobalStyles.content}>

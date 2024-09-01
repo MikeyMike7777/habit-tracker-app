@@ -6,6 +6,7 @@ const Colors = {
     purple: '#a700ff',
     black: 'black',
     white: 'white',
+    lightgray: 'gray',
 }
 
 export default Colors;

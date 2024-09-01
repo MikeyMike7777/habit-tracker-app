@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { AppTitleStyles } from './styles/AppTitleStyles.js';
+import { View, Text, StyleSheet } from 'react-native';
+import { Fonts } from '../constants/Fonts.js';
 
 export default function AppTitle() {
     return (
@@ -10,3 +10,21 @@ export default function AppTitle() {
         </View>
     );
 }
+
+export const AppTitleStyles = StyleSheet.create({
+    titleContainer: {
+        alignItems: 'center',
+        paddingTop: 50,
+        paddingBottom: 20
+    },
+    DIN: {
+        fontFamily: Fonts.Copperplate,
+        fontSize: 70,
+        margin: -10,
+    },
+    DoItNow: {
+        fontFamily: Fonts.Baskerville,
+        fontSize: 17,
+        fontStyle: 'italic'
+    }
+});
