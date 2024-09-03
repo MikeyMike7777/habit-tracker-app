@@ -13,7 +13,7 @@ import { parse, format } from 'date-fns';
 export default function HabitInfo() {
   const { addHabit, updateHabit, removeHabit } = useContext(HabitContext);
   const [title, setTitle] = useState('');
-  const [frequency, setFrequency] = useState('1');
+  const [frequency, setFrequency] = useState('7'); // Default to "7 Days"
   const [streak, setStreak] = useState('0');
   const [bestStreak, setBestStreak] = useState('0');
   const [startDate, setStartDate] = useState('');
@@ -26,20 +26,20 @@ export default function HabitInfo() {
   const router = useRouter();
 
   const frequencyData = [
-    { key: 1, label: '1' },
-    { key: 2, label: '2' },
-    { key: 3, label: '3' },
-    { key: 4, label: '4' },
-    { key: 5, label: '5' },
-    { key: 6, label: '6' },
-    { key: 7, label: '7' },
+    { key: 1, label: '1 Day' },
+    { key: 2, label: '2 Days' },
+    { key: 3, label: '3 Days' },
+    { key: 4, label: '4 Days' },
+    { key: 5, label: '5 Days' },
+    { key: 6, label: '6 Days' },
+    { key: 7, label: '7 Days' },
   ];
 
   useEffect(() => {
     if (params.habit && !isLoaded) {
       const habit = JSON.parse(params.habit);
       setTitle(habit.title);
-      setFrequency(habit.frequency);
+      setFrequency(habit.frequency.toString()); // Ensure it is a string
       setStreak(habit.curStreak);
       setBestStreak(habit.bestStreak);
       setStartDate(format(parseDateWithoutTimezone(habit.startDate), 'MM/dd/yyyy'));
@@ -92,7 +92,7 @@ export default function HabitInfo() {
     const habitData = {
       id: params.habit ? JSON.parse(params.habit).id : Date.now(),
       title,
-      frequency,
+      frequency: parseInt(frequency), // Store only the numeric value
       curStreak: streak,
       bestStreak: params.habit ? bestStreak : streak,
       startDate: new Date(Date.UTC(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate())).toISOString().split('T')[0],

@@ -4,11 +4,17 @@ import ModalSelector from 'react-native-modal-selector';
 import { styles } from '../styles/HabitInfoStyles';
 
 export default function FrequencySelector({ frequency, setFrequency, frequencyData }) {
+  const handleFrequencyChange = (option) => {
+    // Extract the numeric part and set it as frequency
+    const numericValue = option.label.split(' ')[0];
+    setFrequency(numericValue);
+  };
+
   return (
     <ModalSelector
       data={frequencyData}
       initValue="Select Frequency"
-      onChange={(option) => setFrequency(option.label)}
+      onChange={handleFrequencyChange}
       selectStyle={styles.selectorText}
       optionTextStyle={styles.optionText}
     >
@@ -17,7 +23,7 @@ export default function FrequencySelector({ frequency, setFrequency, frequencyDa
         editable={false}
         placeholder="Frequency"
         placeholderTextColor={styles.gray}
-        value={`Frequency: ${frequency}`}
+        value={`Frequency: ${frequency} ${frequency === '1' ? 'Day' : 'Days'}`}
       />
     </ModalSelector>
   );

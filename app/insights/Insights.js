@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import BottomNav from '../../components/BottomNav';
 import Chart from './components/Chart';
-import PercentagesRow from './components/PercentageRow';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import TitleWithButtons from '../../components/TitleWithButtons';
 import { HabitContext } from '../contexts/HabitContext';
@@ -24,7 +23,7 @@ export default function Insights() {
   };
 
   const chartData = {
-    labels: habits.slice(0, 6).map((habit) => habit.title.slice(0, 5)),
+    labels: habits.slice(0, 6).map((habit) => habit.title.slice(0, 3)),
     datasets: [
       {
         data: habits.slice(0, 6).map(habit => 
@@ -41,7 +40,6 @@ export default function Insights() {
       </View>
       <View style={GlobalStyles.content}>
         <Chart data={chartData} />
-        <PercentagesRow data={chartData.datasets[0].data} />
       </View>
       <BottomNav />
     </View>

@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   descriptionInput: {
-    height: 190,
+    height: 290,
     textAlignVertical: 'top',
     fontFamily: Fonts.AvenirMedium,
   },

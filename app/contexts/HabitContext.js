@@ -27,13 +27,6 @@ export const HabitProvider = ({ children }) => {
   };
 
   const addHabit = (newHabit) => {
-    if (habits.length >= 6) {
-      Alert.alert(
-        "Maximum Habits",
-        "You cannot add more than 6 habits.",
-      );
-      return;
-    }
     const updatedHabits = [...habits, newHabit];
     setHabits(updatedHabits);
     logHabits("Add Habit", updatedHabits);
