@@ -5,9 +5,10 @@ import Colors from '../../constants/Colors';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import FrequencySelector from './components/FrequencySelector';
 import StreakInput from './components/StreakInput';
+import DateInput from './components/DateInput';  // Import the DateInput component
 import { styles } from './styles/HabitInfoStyles';
 import { HabitContext } from '../contexts/HabitContext';
-import { parse } from 'date-fns';
+import { parse, format } from 'date-fns'; // Import date parsing and formatting functions
 
 export default function HabitInfo() {
   const { addHabit, updateHabit, removeHabit } = useContext(HabitContext);
@@ -15,11 +16,11 @@ export default function HabitInfo() {
   const [frequency, setFrequency] = useState('1');
   const [streak, setStreak] = useState('0');
   const [bestStreak, setBestStreak] = useState('0');
-  const [startDate, setStartDate] = useState(''); // Used to store the date habit is created
+  const [startDate, setStartDate] = useState('');
   const [description, setDescription] = useState('');
-  const [daysCompleted, setDaysCompleted] = useState(0); // New attribute for tracking completed days
+  const [daysCompleted, setDaysCompleted] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   const params = useLocalSearchParams(); 
   const router = useRouter();
 
@@ -40,14 +41,14 @@ export default function HabitInfo() {
       setFrequency(habit.frequency);
       setStreak(habit.curStreak);
       setBestStreak(habit.bestStreak);
-      setStartDate(habit.startDate);
+      setStartDate(format(new Date(habit.startDate), 'MM/dd/yyyy'));
       setDescription(habit.description);
       setDaysCompleted(habit.daysCompleted); 
       setIsLoaded(true);
     } else if (!params.habit && !isLoaded) {
-      const today = new Date().toLocaleDateString();
+      const today = format(new Date(), 'MM/dd/yyyy'); // Format today's date
       setStartDate(today);
-      setDaysCompleted(0); // Explicitly set to 0 for new habits
+      setDaysCompleted(0);
       setIsLoaded(true);
     }
   }, [params, isLoaded]);
@@ -55,14 +56,14 @@ export default function HabitInfo() {
   const handleStreakChange = (newStreak) => {
     const streakDifference = parseInt(newStreak) - parseInt(streak);
     setStreak(newStreak);
-    setDaysCompleted(parseInt(daysCompleted) + parseInt(streakDifference));
+    setDaysCompleted(daysCompleted + streakDifference);
   };
 
   const handleSave = () => {
     const parsedDate = startDate
-    ? parse(startDate, 'M/d/yyyy', new Date()) // Parses "9/3/2024" correctly
-    : new Date();
-  
+      ? parse(startDate, 'MM/dd/yyyy', new Date())
+      : new Date();
+    
     const habitData = {
       id: params.habit ? JSON.parse(params.habit).id : Date.now(),
       title,
@@ -74,13 +75,13 @@ export default function HabitInfo() {
       daysCompleted: params.habit ? daysCompleted : streak,
       isDone: false,
     };
-  
+
     if (params.habit) {
       updateHabit(habitData.id, habitData);
     } else {
       addHabit(habitData);
     }
-  
+
     router.push('/');
   };
 
@@ -107,12 +108,10 @@ export default function HabitInfo() {
         onChangeText={setTitle}
       />
       
-      <View style={styles.input}>
-        <Text style={styles.pickerText}>Start Date: {startDate}</Text>
-      </View>
+      <DateInput value={startDate} onChange={setStartDate}/>
+
       <FrequencySelector frequency={frequency} setFrequency={setFrequency} frequencyData={frequencyData} />
       <StreakInput streak={streak} setStreak={handleStreakChange} label="Current Streak:"/>
-      {/* <StreakInput streak={bestStreak} setStreak={setBestStreak} label="Best Streak:"/> */}
 
       <TextInput
         style={[styles.input, styles.descriptionInput]}
