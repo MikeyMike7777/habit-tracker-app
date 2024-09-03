@@ -26,13 +26,13 @@ export default function HabitInfo() {
   const router = useRouter();
 
   const frequencyData = [
-    { key: 1, label: '1 Day' },
-    { key: 2, label: '2 Days' },
-    { key: 3, label: '3 Days' },
-    { key: 4, label: '4 Days' },
-    { key: 5, label: '5 Days' },
-    { key: 6, label: '6 Days' },
-    { key: 7, label: '7 Days' },
+    { key: 1, label: '1 Day per Week' },
+    { key: 2, label: '2 Days per Week' },
+    { key: 3, label: '3 Days per Week' },
+    { key: 4, label: '4 Days per Week' },
+    { key: 5, label: '5 Days per Week' },
+    { key: 6, label: '6 Days per Week' },
+    { key: 7, label: '7 Days per Week' },
   ];
 
   useEffect(() => {

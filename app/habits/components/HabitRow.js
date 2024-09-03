@@ -9,7 +9,15 @@ export default function HabitRow({ habit }) {
   return (
     <View style={HabitRowStyles.rowContainer}>
       <View style={HabitRowStyles.leftSection}>
-        <Text style={HabitRowStyles.title}>{habit.title}</Text>
+        <Text
+          style={HabitRowStyles.title}
+          numberOfLines={3}
+          ellipsizeMode="tail"
+          adjustsFontSizeToFit={true}
+          minimumFontScale={0.5}
+        >
+          {habit.title}
+        </Text>
       </View>
       <View style={HabitRowStyles.middleLeftSection}>
         <View style={HabitRowStyles.iconRow}>
@@ -55,15 +63,15 @@ const HabitRowStyles = StyleSheet.create({
   },
   middleLeftSection: {
     flexDirection: 'row',
-    alignItems: 'left',
+    alignItems: 'flex-start',
     flex: 1,
-    justifyContent: 'left',
+    justifyContent: 'flex-start',
   },
   middleRightSection: {
     flexDirection: 'row',
-    alignItems: 'left',
+    alignItems: 'flex-start',
     flex: 1,
-    justifyContent: 'left',
+    justifyContent: 'flex-start',
   },
   rightSection: {
     flexDirection: 'row',
@@ -77,6 +85,7 @@ const HabitRowStyles = StyleSheet.create({
     fontSize: 18,
     color: Colors.black,
     marginRight: 10,
+    flexShrink: 1,
   },
   iconRow: {
     flexDirection: 'row',
