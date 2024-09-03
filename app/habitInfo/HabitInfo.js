@@ -5,10 +5,10 @@ import Colors from '../../constants/Colors';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import FrequencySelector from './components/FrequencySelector';
 import StreakInput from './components/StreakInput';
-import DateInput from './components/DateInput';  // Import the DateInput component
+import DateInput from './components/DateInput';
 import { styles } from './styles/HabitInfoStyles';
 import { HabitContext } from '../contexts/HabitContext';
-import { parse, format } from 'date-fns'; // Import date parsing and formatting functions
+import { parse, format } from 'date-fns';
 
 export default function HabitInfo() {
   const { addHabit, updateHabit, removeHabit } = useContext(HabitContext);
@@ -41,19 +41,41 @@ export default function HabitInfo() {
       setFrequency(habit.frequency);
       setStreak(habit.curStreak);
       setBestStreak(habit.bestStreak);
-      setStartDate(format(new Date(habit.startDate), 'MM/dd/yyyy'));
+      setStartDate(format(parseDateWithoutTimezone(habit.startDate), 'MM/dd/yyyy'));
       setDescription(habit.description);
       setDaysCompleted(habit.daysCompleted); 
       setIsLoaded(true);
     } else if (!params.habit && !isLoaded) {
-      const today = format(new Date(), 'MM/dd/yyyy'); // Format today's date
+      const today = format(new Date(), 'MM/dd/yyyy');
       setStartDate(today);
       setDaysCompleted(0);
       setIsLoaded(true);
     }
   }, [params, isLoaded]);
 
+  const parseDateWithoutTimezone = (dateString) => {
+    const [year, month, day] = dateString.split('-').map(Number);
+    return new Date(year, month - 1, day); // month is zero-indexed
+  };
+
+  const calculateDays = (startDate) => {
+    const start = parse(startDate, 'MM/dd/yyyy', new Date());
+    const today = new Date();
+    const differenceInTime = today.getTime() - start.getTime();
+    return Math.floor(differenceInTime / (1000 * 3600 * 24)) + 1;
+  };
+
   const handleStreakChange = (newStreak) => {
+    const totalDays = calculateDays(startDate);
+
+    if (parseInt(newStreak) > totalDays) {
+      Alert.alert(
+        "Invalid Streak",
+        `Current streak cannot be greater than the number of days since the start date (${totalDays} days).`
+      );
+      return;
+    }
+
     const streakDifference = parseInt(newStreak) - parseInt(streak);
     setStreak(newStreak);
     setDaysCompleted(daysCompleted + streakDifference);
@@ -70,7 +92,7 @@ export default function HabitInfo() {
       frequency,
       curStreak: streak,
       bestStreak: params.habit ? bestStreak : streak,
-      startDate: parsedDate.toISOString().split('T')[0],
+      startDate: new Date(Date.UTC(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate())).toISOString().split('T')[0],
       description,
       daysCompleted: params.habit ? daysCompleted : streak,
       isDone: false,

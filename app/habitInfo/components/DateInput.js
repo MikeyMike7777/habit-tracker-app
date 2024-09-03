@@ -28,7 +28,7 @@ export default function DateInput({ value, onChange }) {
       placeholder="Start Date: mm/dd/yyyy"
       placeholderTextColor={Colors.gray}
       value={value}
-      onChangeText={formatDate}
+      // onChangeText={formatDate}
       keyboardType="numeric"
       maxLength={10} // mm/dd/yyyy
     />
