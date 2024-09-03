@@ -29,7 +29,6 @@ export default function MidnightResetHandler() {
     habits.forEach(habit => {
       updateHabit(habit.id, { isDone: false });
     });
-    console.log("Habits reset at target time");
   };
 
   useEffect(() => {
