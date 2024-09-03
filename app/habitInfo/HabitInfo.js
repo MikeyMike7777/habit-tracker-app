@@ -19,6 +19,7 @@ export default function HabitInfo() {
   const [startDate, setStartDate] = useState('');
   const [description, setDescription] = useState('');
   const [daysCompleted, setDaysCompleted] = useState(0);
+  const [isDone, setIsDone] = useState(false); // Ensure isDone is part of the state
   const [isLoaded, setIsLoaded] = useState(false);
 
   const params = useLocalSearchParams(); 
@@ -43,12 +44,14 @@ export default function HabitInfo() {
       setBestStreak(habit.bestStreak);
       setStartDate(format(parseDateWithoutTimezone(habit.startDate), 'MM/dd/yyyy'));
       setDescription(habit.description);
-      setDaysCompleted(habit.daysCompleted); 
+      setDaysCompleted(habit.daysCompleted);
+      setIsDone(habit.isDone); // Load the isDone value
       setIsLoaded(true);
     } else if (!params.habit && !isLoaded) {
       const today = format(new Date(), 'MM/dd/yyyy');
       setStartDate(today);
       setDaysCompleted(0);
+      setIsDone(false); // Initialize as false for new habits
       setIsLoaded(true);
     }
   }, [params, isLoaded]);
@@ -95,7 +98,7 @@ export default function HabitInfo() {
       startDate: new Date(Date.UTC(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate())).toISOString().split('T')[0],
       description,
       daysCompleted: params.habit ? daysCompleted : streak,
-      isDone: false,
+      isDone, // Save the current value of isDone
     };
 
     if (params.habit) {
@@ -131,7 +134,6 @@ export default function HabitInfo() {
       />
       
       <DateInput value={startDate} onChange={setStartDate}/>
-
       <FrequencySelector frequency={frequency} setFrequency={setFrequency} frequencyData={frequencyData} />
       <StreakInput streak={streak} setStreak={handleStreakChange} label="Current Streak:"/>
 
