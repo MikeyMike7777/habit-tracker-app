@@ -6,6 +6,7 @@ import Chart from './components/Chart';
 import PercentagesRow from './components/PercentageRow';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import TitleWithButtons from '../../components/TitleWithButtons';
+import { HabitProvider } from '../contexts/HabitContext';
 
 export default function Insights() {
   const chartData = {
@@ -18,16 +19,18 @@ export default function Insights() {
   };
 
   return (
-    <View style={GlobalStyles.container}>
-      <View style={styles.spacing}>
-        <TitleWithButtons/>
+    <HabitProvider>
+      <View style={GlobalStyles.container}>
+        <View style={styles.spacing}>
+          <TitleWithButtons/>
+        </View>
+        <View style={GlobalStyles.content}>
+          <Chart data={chartData} />
+          <PercentagesRow data={chartData.datasets[0].data} />
+        </View>
+        <BottomNav />
       </View>
-      <View style={GlobalStyles.content}>
-        <Chart data={chartData} />
-        <PercentagesRow data={chartData.datasets[0].data} />
-      </View>
-      <BottomNav />
-    </View>
+    </HabitProvider>
   );
 }
 

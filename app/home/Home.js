@@ -1,39 +1,48 @@
-import { Link } from 'expo-router';
-import { View, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 import BottomNav from '../../components/BottomNav';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import AppTitle from '../../components/AppTitle';
 import HabitBox from './components/HabitBox';
 import Colors from '../../constants/Colors';
 import TitleWithButtons from '../../components/TitleWithButtons';
+import { HabitContext } from '../contexts/HabitContext';
 
 export default function HomeScreen() {
+  const { habits } = useContext(HabitContext);
+
   return (
     <View style={GlobalStyles.container}>
-      <TitleWithButtons/>
-      <View style={GlobalStyles.content}> 
+      <TitleWithButtons />
+      <View style={GlobalStyles.content}>
+      {habits.length > 0 ? (
         <View style={styles.grid}>
-          <HabitBox title="Habit 1" count="2" iconColor={Colors.blue}/>
-          <HabitBox title="Habit 2" count="2" iconColor={Colors.blue}/>
-          <HabitBox title="Habit 3" count="21" iconColor={Colors.blue}/>
-          <HabitBox title="Habit 4" count="66" iconColor={Colors.blue}/>
-          <HabitBox title="Habit 5" count="90" iconColor={Colors.blue}/>
-          <HabitBox title="Habit 6" count="2" iconColor={Colors.blue}/>
-        </View> 
+          {habits.slice(0, 6).map((habit) => (
+            <HabitBox
+              key={habit.id}
+              id={habit.id}
+              title={habit.title}
+              curStreak={habit.curStreak}
+              bestStreak={habit.bestStreak}
+              isDone={habit.isDone}
+            />
+          ))}
+        </View>
+        ) : (
+          <Text style={GlobalStyles.noHabitsText}>No habits yet. Add a new habit!</Text>
+        )}
       </View>
-      <BottomNav/>
+      <BottomNav />
     </View>
   );
 }
 
 export const styles = StyleSheet.create({
   grid: {
-    height: "100%",
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    paddingHorizontal: 40,
-    marginHorizontal: 10,
+    justifyContent: 'space-around',
+    paddingHorizontal: 35,
     paddingTop: 20,
   },
 });

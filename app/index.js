@@ -1,5 +1,8 @@
-import { Redirect } from 'expo-router';
+import { HabitProvider } from './contexts/HabitContext';
+import Home from './home/Home';
 
 export default function Index() {
-  return <Redirect href="home/Home"/>;
+  return (
+    <Home/>
+  )
 }

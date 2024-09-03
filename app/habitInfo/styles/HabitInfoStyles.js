@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
+    paddingTop: 20,
   },
   input: {
     borderBottomWidth: 1,
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   descriptionInput: {
-    height: 290,
+    height: 190,
     textAlignVertical: 'top',
     fontFamily: Fonts.AvenirMedium,
   },
@@ -49,5 +50,20 @@ export const styles = StyleSheet.create({
     color: Colors.black,
     marginLeft: 10,
     flex: 1,
+  },
+  deleteButton: {
+    alignItems: 'center',
+    padding: 30,
+    borderRadius: 10,
+  },
+  deleteButtonText: {
+    fontFamily: Fonts.AvenirHeavy,
+    fontSize: 18,
+  },
+  cancelButton: {
+    paddingLeft: 20,
+  },
+  saveButton: {
+      paddingRight: 20,
   },
 });

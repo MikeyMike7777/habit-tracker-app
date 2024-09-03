@@ -14,7 +14,7 @@ export default function HomeInfo() {
       <View style={styles.space}>
         <AppTitle />
       </View>
-      <Link href="/home/Home" style={[GlobalStyles.doneButton, styles.done]}>Done</Link>
+      <Link href="/home/Home" style={[GlobalStyles.wordButton, styles.done]}>Done</Link>
 
       {/* Facts */}
       <View style={GlobalStyles.content}>
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   done: {
     position: 'absolute',
     fontSize: 14,
-    top: 30,
-    right: 20,
+    top: 40,
+    right: 30,
   },
   space: {
     marginTop: 45,

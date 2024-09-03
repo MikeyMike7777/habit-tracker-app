@@ -17,7 +17,7 @@ export default function BottomNav() {
       </Link>
       <Link href="/" style={NavStyles.navItem}>
         <Ionicons 
-          name={pathname === '/home/Home' ? 'home-outline' : 'home'} 
+          name={pathname === '/' ? 'home-outline' : 'home'} 
           size={50} 
           color="black"
         />

@@ -8,23 +8,17 @@ export const GlobalStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: Colors.offWhite,
+        paddingTop: 20
     },
     content: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    cancelButton: {
+    wordButton: {
         fontFamily: Fonts.AvenirHeavy,
         fontSize: 18,
         color: Colors.black,
-        paddingLeft: 20,
-      },
-    doneButton: {
-        fontFamily: Fonts.AvenirHeavy,
-        fontSize: 18,
-        color: Colors.black,
-        paddingRight: 20,
     },
     header: {
         flexDirection: 'row',
@@ -32,4 +26,10 @@ export const GlobalStyles = StyleSheet.create({
         paddingTop: 30,
         paddingBottom: 30,
     },
+    noHabitsText: {
+        fontFamily: Fonts.AvenirHeavy,
+        fontSize: 18,
+        color: Colors.gray,
+        textAlign: 'center',
+      },
 });
