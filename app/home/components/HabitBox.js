@@ -10,6 +10,7 @@ export default function HabitBox({ id, title, curStreak, bestStreak, isDone }) {
 
     const toggleDone = () => {
         let newCurStreak = isDone ? parseInt(curStreak) - 1 : parseInt(curStreak) + 1;
+        let newDaysCompleted = isDone ? parseInt(curStreak) - 1 : parseInt(curStreak) + 1;
         let newBestStreak = bestStreak;
     
         // Only update bestStreak if curStreak surpasses or equals it
@@ -26,6 +27,7 @@ export default function HabitBox({ id, title, curStreak, bestStreak, isDone }) {
         updateHabit(id, { 
             curStreak: newCurStreak, 
             bestStreak: newBestStreak, 
+            daysCompleted: newDaysCompleted,
             isDone: !isDone 
         });
     };

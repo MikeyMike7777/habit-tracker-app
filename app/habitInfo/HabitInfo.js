@@ -7,6 +7,7 @@ import FrequencySelector from './components/FrequencySelector';
 import StreakInput from './components/StreakInput';
 import { styles } from './styles/HabitInfoStyles';
 import { HabitContext } from '../contexts/HabitContext';
+import { parse } from 'date-fns';
 
 export default function HabitInfo() {
   const { addHabit, updateHabit, removeHabit } = useContext(HabitContext);
@@ -16,6 +17,7 @@ export default function HabitInfo() {
   const [bestStreak, setBestStreak] = useState('0');
   const [startDate, setStartDate] = useState(''); // Used to store the date habit is created
   const [description, setDescription] = useState('');
+  const [daysCompleted, setDaysCompleted] = useState(0); // New attribute for tracking completed days
   const [isLoaded, setIsLoaded] = useState(false);
   
   const params = useLocalSearchParams(); 
@@ -40,23 +42,36 @@ export default function HabitInfo() {
       setBestStreak(habit.bestStreak);
       setStartDate(habit.startDate);
       setDescription(habit.description);
+      setDaysCompleted(habit.daysCompleted); 
       setIsLoaded(true);
     } else if (!params.habit && !isLoaded) {
       const today = new Date().toLocaleDateString();
       setStartDate(today);
+      setDaysCompleted(0); // Explicitly set to 0 for new habits
       setIsLoaded(true);
     }
   }, [params, isLoaded]);
 
+  const handleStreakChange = (newStreak) => {
+    const streakDifference = parseInt(newStreak) - parseInt(streak);
+    setStreak(newStreak);
+    setDaysCompleted(parseInt(daysCompleted) + parseInt(streakDifference));
+  };
+
   const handleSave = () => {
+    const parsedDate = startDate
+    ? parse(startDate, 'M/d/yyyy', new Date()) // Parses "9/3/2024" correctly
+    : new Date();
+  
     const habitData = {
       id: params.habit ? JSON.parse(params.habit).id : Date.now(),
       title,
       frequency,
       curStreak: streak,
-      bestStreak,
-      startDate,
+      bestStreak: params.habit ? bestStreak : streak,
+      startDate: parsedDate.toISOString().split('T')[0],
       description,
+      daysCompleted: params.habit ? daysCompleted : streak,
       isDone: false,
     };
   
@@ -68,7 +83,6 @@ export default function HabitInfo() {
   
     router.push('/');
   };
-  
 
   const handleDelete = () => {
     if (params.habit) {
@@ -97,8 +111,8 @@ export default function HabitInfo() {
         <Text style={styles.pickerText}>Start Date: {startDate}</Text>
       </View>
       <FrequencySelector frequency={frequency} setFrequency={setFrequency} frequencyData={frequencyData} />
-      <StreakInput streak={streak} setStreak={setStreak} label="Current Streak:"/>
-      <StreakInput streak={bestStreak} setStreak={setBestStreak} label="Best Streak:"/>
+      <StreakInput streak={streak} setStreak={handleStreakChange} label="Current Streak:"/>
+      {/* <StreakInput streak={bestStreak} setStreak={setBestStreak} label="Best Streak:"/> */}
 
       <TextInput
         style={[styles.input, styles.descriptionInput]}
