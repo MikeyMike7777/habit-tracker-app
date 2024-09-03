@@ -12,17 +12,24 @@ export default function HabitBox({ id, title, curStreak, bestStreak, isDone }) {
         let newCurStreak = isDone ? parseInt(curStreak) - 1 : parseInt(curStreak) + 1;
         let newBestStreak = bestStreak;
     
-        // Update bestStreak if curStreak surpasses or equals it
+        // Only update bestStreak if curStreak surpasses or equals it
         if (newCurStreak >= bestStreak) {
             newBestStreak = newCurStreak;
         }
     
+        // Ensure bestStreak follows the curStreak adjustment
+        if (parseInt(curStreak) >= parseInt(bestStreak)) {
+            newBestStreak = isDone ? parseInt(bestStreak) - 1 : parseInt(bestStreak) + 1;
+        }
+    
+        // Update the habit
         updateHabit(id, { 
             curStreak: newCurStreak, 
             bestStreak: newBestStreak, 
             isDone: !isDone 
         });
     };
+    
     
 
     const getIconColor = () => {
