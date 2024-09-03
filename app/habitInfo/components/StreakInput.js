@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { styles } from '../styles/HabitInfoStyles';
 
-export default function StreakInput({ streak, setStreak, label = "Streak:" }) {
+export default function StreakInput({ streak, setStreak, label}) {
   return (
     <View style={styles.inputRow}>
       <Text style={styles.pickerText}>{label}</Text>

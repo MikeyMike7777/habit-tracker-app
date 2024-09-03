@@ -3,19 +3,18 @@ import { View, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
 import { Link, useLocalSearchParams, useRouter } from 'expo-router';
 import Colors from '../../constants/Colors';
 import { GlobalStyles } from '../styles/GlobalStyles';
-import DateInput from './components/DateInput';
 import FrequencySelector from './components/FrequencySelector';
 import StreakInput from './components/StreakInput';
 import { styles } from './styles/HabitInfoStyles';
 import { HabitContext } from '../contexts/HabitContext';
 
 export default function HabitInfo() {
-  const { habits, addHabit, updateHabit, removeHabit } = useContext(HabitContext);
+  const { addHabit, updateHabit, removeHabit } = useContext(HabitContext);
   const [title, setTitle] = useState('');
   const [frequency, setFrequency] = useState('1');
   const [streak, setStreak] = useState('0');
-  const [bestStreak, setBestStreak] = useState('0'); 
-  const [startDate, setStartDate] = useState('');
+  const [bestStreak, setBestStreak] = useState('0');
+  const [startDate, setStartDate] = useState(''); // Used to store the date habit is created
   const [description, setDescription] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   
@@ -42,24 +41,12 @@ export default function HabitInfo() {
       setStartDate(habit.startDate);
       setDescription(habit.description);
       setIsLoaded(true);
+    } else if (!params.habit && !isLoaded) {
+      const today = new Date().toLocaleDateString();
+      setStartDate(today);
+      setIsLoaded(true);
     }
   }, [params, isLoaded]);
-
-  const handleDateChange = (value) => {
-    let sanitizedValue = value.replace(/[^0-9/]/g, '');
-  
-    if (sanitizedValue.length < startDate.length) {
-      if (startDate[startDate.length - 1] === '/' && sanitizedValue[sanitizedValue.length - 1] !== '/') {
-        sanitizedValue = sanitizedValue.slice(0, -1);
-      }
-    }
-  
-    if (sanitizedValue.length === 2 || sanitizedValue.length === 5) {
-      sanitizedValue += '/';
-    }
-  
-    setStartDate(sanitizedValue);
-  };
 
   const handleSave = () => {
     const habitData = {
@@ -106,7 +93,9 @@ export default function HabitInfo() {
         onChangeText={setTitle}
       />
       
-      <DateInput value={startDate} onChange={handleDateChange} />
+      <View style={styles.input}>
+        <Text style={styles.pickerText}>Start Date: {startDate}</Text>
+      </View>
       <FrequencySelector frequency={frequency} setFrequency={setFrequency} frequencyData={frequencyData} />
       <StreakInput streak={streak} setStreak={setStreak} label="Current Streak:"/>
       <StreakInput streak={bestStreak} setStreak={setBestStreak} label="Best Streak:"/>
