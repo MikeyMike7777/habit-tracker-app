@@ -12,12 +12,21 @@ The Habit Tracker App is designed to help users build and maintain positive habi
   npm install -g expo-cli
 - **Expo Go App**: If you would like to run this app on your phone, download the Expo Go app
 
-### Installing and Running Application
+### Installing
 1. Clone project: https://github.com/bkcan/habit-tracker.git
 2. Enter project: cd habit-tracker-app
 3. Install dependencies: npm install
-4. Run on simulator: npx expo start;    Run on device: npx expo start --tunnel
-5. Open app on simulator or scan QR coce with device
+
+### Running Application
+#### Run on simulator 
+1. Open simulator of choice
+2. git switch simulator
+3. npx expo start
+4. Type 'i' to open on iOS simulaotr or 'a' to open on android simulator
+#### Run on device:
+1. git switch device
+2. npx expo start --tunnel
+3. Scan QR code with device
 
 ## Major Features
 ### Habit Check-Off System
