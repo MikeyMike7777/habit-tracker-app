@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
     paddingTop: 20,
+    maxHeight: 800,
+    marginTop: 50,
+    marginBottom: 40,
   },
   input: {
     borderBottomWidth: 1,
@@ -15,10 +18,10 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 13,
     color: Colors.black,
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
   },
   descriptionInput: {
-    height: 290,
+    height: 390,
     textAlignVertical: 'top',
     fontFamily: Fonts.AvenirMedium,
   },
@@ -42,7 +45,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'lightgrey',
     paddingVertical: 13,
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
   },
   streakInput: {
     fontFamily: Fonts.AvenirMedium,
@@ -61,9 +64,9 @@ export const styles = StyleSheet.create({
     fontSize: 18,
   },
   cancelButton: {
-    paddingLeft: 20,
+    paddingLeft: 25,
   },
   saveButton: {
-      paddingRight: 20,
+      paddingRight: 25,
   },
 });

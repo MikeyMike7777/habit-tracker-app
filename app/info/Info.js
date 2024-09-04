@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   done: {
     position: 'absolute',
     fontSize: 16,
-    top: 40,
-    right: 30,
+    top: 100,
+    right: 40,
   },
   space: {
     marginTop: 45,

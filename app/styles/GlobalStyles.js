@@ -8,7 +8,8 @@ export const GlobalStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: Colors.offWhite,
-        paddingTop: 20
+        paddingTop: 70,
+        paddingBottom: 40,
     },
     content: {
         flex: 1,

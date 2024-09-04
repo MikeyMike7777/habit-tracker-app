@@ -14,17 +14,17 @@ export default function AppTitle() {
 export const AppTitleStyles = StyleSheet.create({
     titleContainer: {
         alignItems: 'center',
-        paddingTop: 50,
+        paddingTop: 80,
         paddingBottom: 20
     },
     DIN: {
         fontFamily: Fonts.Copperplate,
-        fontSize: 70,
+        fontSize: 90,
         margin: -10,
     },
     DoItNow: {
         fontFamily: Fonts.Baskerville,
-        fontSize: 17,
+        fontSize: 20,
         fontStyle: 'italic'
     }
 });
