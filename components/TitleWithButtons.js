@@ -41,16 +41,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 90,
+    paddingHorizontal: 110,
   },
   infoButton: {
     position: 'absolute',
-    top: 10,
+    top: 20,
     left: 0,
   },
   addButton: {
     position: 'absolute',
-    top: 10,
+    top: 20,
     right: 0,
   },
 });

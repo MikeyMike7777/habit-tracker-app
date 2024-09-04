@@ -6,6 +6,14 @@ import { Fonts } from '../../../constants/Fonts';
 import { Link } from 'expo-router';
 
 export default function HabitRow({ habit }) {
+  // Define the getIconColor function within the HabitRow component
+  const getIconColor = (curStreak, bestStreak) => {
+    if (curStreak >= 90) return Colors.purple;
+    if (curStreak >= 66) return Colors.blue;
+    if (curStreak >= 21) return Colors.green;
+    return Colors.black;
+  };
+
   return (
     <View style={HabitRowStyles.rowContainer}>
       <View style={HabitRowStyles.leftSection}>
@@ -21,7 +29,7 @@ export default function HabitRow({ habit }) {
       </View>
       <View style={HabitRowStyles.middleLeftSection}>
         <View style={HabitRowStyles.iconRow}>
-          <Ionicons name="checkmark-circle" size={20} color={Colors.black} />
+          <Ionicons name="checkmark-circle" size={20} color={getIconColor(habit.curStreak, habit.bestStreak)} />
           <Text style={HabitRowStyles.count}>{habit.curStreak}</Text>
         </View>
       </View>
