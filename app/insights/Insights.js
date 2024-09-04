@@ -23,7 +23,7 @@ export default function Insights() {
   };
 
   const chartData = {
-    labels: habits.slice(0, 6).map((habit) => habit.title.slice(0, 3)),
+    labels: habits.slice(0, 6).map((habit) => habit.title.slice(0, 4)),
     datasets: [
       {
         data: habits.slice(0, 6).map(habit => 

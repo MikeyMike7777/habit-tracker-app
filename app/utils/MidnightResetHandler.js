@@ -27,9 +27,16 @@ export default function MidnightResetHandler() {
   // Function to reset all habits' isDone to false
   const resetHabitsAtTargetTime = () => {
     habits.forEach(habit => {
-      updateHabit(habit.id, { isDone: false });
+      if (!habit.isDone) {
+        // If isDone is false, reset curStreak to 0
+        updateHabit(habit.id, { curStreak: 0, isDone: false });
+      } else {
+        // If isDone is true, just set isDone to false
+        updateHabit(habit.id, { isDone: false });
+      }
     });
   };
+  
 
   useEffect(() => {
     // Calculate the time until the next target time

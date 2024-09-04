@@ -8,7 +8,7 @@ import StreakInput from './components/StreakInput';
 import DateInput from './components/DateInput';
 import { styles } from './styles/HabitInfoStyles';
 import { HabitContext } from '../contexts/HabitContext';
-import { parse, format } from 'date-fns';
+import { parse, format, isValid } from 'date-fns';
 
 export default function HabitInfo() {
   const { addHabit, updateHabit, removeHabit } = useContext(HabitContext);
@@ -88,7 +88,13 @@ export default function HabitInfo() {
     const parsedDate = startDate
       ? parse(startDate, 'MM/dd/yyyy', new Date())
       : new Date();
-    
+  
+    // Validate if the parsed date is a valid date
+    if (!isValid(parsedDate)) {
+      Alert.alert("Invalid Date", "Please enter a valid date in the format MM/DD/YYYY.");
+      return;
+    }
+  
     const habitData = {
       id: params.habit ? JSON.parse(params.habit).id : Date.now(),
       title,
@@ -100,13 +106,13 @@ export default function HabitInfo() {
       daysCompleted: params.habit ? daysCompleted : streak,
       isDone, // Save the current value of isDone
     };
-
+  
     if (params.habit) {
       updateHabit(habitData.id, habitData);
     } else {
       addHabit(habitData);
     }
-
+  
     router.push('/');
   };
 

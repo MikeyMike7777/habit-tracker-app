@@ -1,58 +1,77 @@
-# Smart Habit Tracker Project
+# Habit Tracker App
 
 ## Overview
-The Smart Habit Tracker is a mobile application designed to help users build and maintain positive habits through daily tracking and progress visualization. This app allows users to set up custom habits, monitor their progress over time, and stay motivated by visualizing their progress.
+The Habit Tracker App is designed to help users build and maintain positive habits through a simple, intuitive, and visually appealing interface. The app includes various features that ensure habits are tracked effectively, and statistics are provided to help users understand their progress over time.
 
-The Smart Habit Tracker focuses on simplicity and user-friendliness, ensuring that users can concentrate on their goals without getting overwhelmed by complex features.
+## Getting Started
 
-## Project Goals
-- Develop a mobile app using React Native that helps users build and track habits.
-- Apply core React Native concepts such as state management, navigation, and data storage.
+### Prerequisites
+- **Node.js**: Ensure you have Node.js installed on your system. You can download it from [here](https://nodejs.org/).
+- **Expo CLI**: Install Expo CLI globally using npm:
+  ```bash
+  npm install -g expo-cli
+- **Expo Go App**: If you would like to run this app on your phone, download the Expo Go app
 
-## Project Features
+### Installing and Running Application
+1. Clone project: https://github.com/bkcan/habit-tracker.git
+2. Enter project: cd habit-tracker-app
+3. Install dependencies: npm install
+4. Run on simulator: npx expo start;    Run on device: npx expo start --tunnel
+5. Open app on simulator or scan QR coce with device
 
-1. **Habit Creation:**
-   - Users can add new habits by providing details like the name, description, start date, and frequency (e.g., daily, weekly).
-   - Data should be managed efficiently using appropriate data structures.
+## Major Features
+### Habit Check-Off System
+- Users can easily mark habits as completed for the day with a simple tap.
+- Each habit's status is visually updated to reflect whether it has been completed or not.
+### List of Habits System
+- Displays all user-created habits in an organized list.
+- Each habit is presented with its current streak and best streak, along with the option to view more detailed information.
+### Habit Information Display System
+- Provides detailed information about each habit, including start date, frequency, current streak, best streak, and description.
+- Users can edit habit details, including the title, start date, and frequency.
+### Individual Habit Statistic System with Bar Chart
+- Visual representation of habit statistics using a bar chart.
+- Users can view their habit completion percentage over time, helping to monitor progress.
+### Unique Colored Icon System
+- Each habit is represented with an icon whose color changes based on the habit's current streak and best streak.
+- Icons provide immediate visual feedback on a habit’s progress.
+### Icon Coloring Information Page
+- Detailed information on what each icon color represents, making it easier for users to understand their progress at a glance.
+### Async Data Storage
+- Habit data is stored locally on the device using AsyncStorage, ensuring persistence across sessions.
+- The app saves and retrieves data efficiently, ensuring users never lose their progress.
+### Context API
+- The app leverages the Context API for state management, ensuring a consistent user experience across different components.
+- Provides a seamless way to access and update habit data throughout the app.
+### Simplistic and Intuitive UI Layout and Functionality
+- The app features a clean and user-friendly interface, making it easy for users of all ages to navigate and use.
+Simplistic design choices ensure that the focus remains on the user's habits and progress.
 
-2. **Daily Check-ins:**
-   - Users can mark habits as completed on a daily basis.
-   - Implement local data storage using `AsyncStorage` to persist user data.
-
-3. **Progress Visualization:**
-   - Display the user’s progress with habits using visual elements like charts.
-   - Use a chart library to visualize progress data (e.g., bar charts, line charts).
-
-4. **User Interface and Experience:**
-   - Create a clean, user-friendly interface.
-   - Ensure seamless navigation using React Navigation.
-
-## Technical Requirements
-- **Technologies:** React Native, React Navigation, AsyncStorage, Chart libraries (e.g., `react-native-chart-kit`), Context API.
-- **Tools:** Visual Studio Code, Git for version control, React Native CLI/Expo for development.
-- **Platforms:** The app should be developed for both iOS and Android.
-
-## Evaluation Criteria
-The project will be evaluated based on the following criteria:
-
-1. **Folder Structure:**
-   - The organization of the project's folder structure should be logical and scalable.
-   - Code and assets should be grouped in a way that enhances readability and maintainability.
-
-2. **Reusability:**
-   - Components should be designed for reuse where applicable.
-   - Code should follow DRY (Don't Repeat Yourself) principles to avoid redundancy.
-
-3. **Code Structure and Comments:**
-   - The code should be well-structured, following best practices for readability and maintainability.
-   - Adequate comments should be provided to explain the purpose of complex logic and components, making the codebase easier to understand.
-
-## Deliverables
-- A fully functional Smart Habit Tracker app for both iOS and Android.
-- Clean, maintainable code with comments where necessary.
-- Documentation for the app, including setup instructions and an overview of key components.
-
-## Next Steps
-- Begin development according to the outlined plan.
-- Regularly update on progress and any potential roadblocks.
-- Final deliverable should be completed within one week.
+## Minor Features
+### Streak Updating with Habit Completion
+- Each time a habit is marked as complete, the current streak is automatically updated.
+- The app checks if the new streak surpasses the best streak and updates it accordingly.
+### Habit Completion Reset at Midnight Every Day
+- At midnight, the app automatically resets all habits completion status to ensure users start fresh every day.
+- The reset occurs based on the user's local timezone.
+- If the habit was not completed, the current streak will be lost
+### Over-Creation of Habit Prevention with Alert
+- The app prevents users from creating more than six habits, displaying an alert if they attempt to exceed this limit.
+### Title Wrapping for Long Habit Titles
+- Habit titles that are too long to fit within the display area automatically wrap or truncate with ellipses, ensuring the UI remains clean and readable.
+### Custom Date Styling for Input
+- Date inputs are styled with custom formatting, ensuring users can easily enter and view dates in the mm/dd/yyyy format.
+- The date input automatically formats as the user types, enhancing the user experience.
+- The date input is also validated to prevent non-existent dates
+### Prevention of Streaks Exceeding Possible Days
+- The app prevents users from setting a streak value that exceeds the number of days since the habit's start date, ensuring accurate tracking.
+- Auto Updates Best Streak if Current Streak is Greater
+- If the current streak surpasses the best streak, the app automatically updates the best streak to match, ensuring accurate statistics.
+### Description of Habit Storage
+- Users can add and store descriptions for each habit, providing context or notes that help them stay motivated or remember details about the habit.
+### Overall Habit Completion Statistic
+- The app calculates and displays an overall habit completion percentage based on the number of days since the start date and the habit's frequency per week.
+### Custom Splash Screen
+- The app features a custom splash screen that enhances the user experience and brand identity.
+### Wireframes
+- The development process included detailed wireframes that guided the design and functionality of the app, ensuring a well-thought-out user interface.

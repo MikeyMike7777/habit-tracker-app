@@ -14,7 +14,7 @@ export default function TitleWithButtons() {
     if (habits.length >= 6) {
       Alert.alert("Maximum Habits", "You cannot add more than 6 habits.");
     } else {
-      router.push('/');
+      router.push('/habitInfo/HabitInfo');
     }
   };
 
@@ -41,16 +41,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 110,
+    paddingHorizontal: 90,
   },
   infoButton: {
     position: 'absolute',
-    top: 20,
+    top: 10,
     left: 0,
   },
   addButton: {
     position: 'absolute',
-    top: 18,
+    top: 10,
     right: 0,
   },
 });
