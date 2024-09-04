@@ -41,7 +41,6 @@ export default function MidnightResetHandler() {
   useEffect(() => {
     // Calculate the time until the next target time
     const timeUntilTarget = getTimeUntilTargetTime();
-    console.log('Time until target:', timeUntilTarget);
 
     // Set the first timeout for the initial reset
     const resetTimeout = setTimeout(() => {
